@@ -1,0 +1,9 @@
+<h2> </h2>
+
+<ul class="collection">
+    <%= for topic <- @optics do %>
+        <li class="collection-item">
+            <%= topic.title %>
+        </li>
+    <% end %>
+</ul>

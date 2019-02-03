@@ -1,0 +1,14 @@
+<%# The @changeset below is hooked with topic_controller %>
+<%= form_for @changeset, topic_path(@conn, :create), fn f-> %>
+    <div class="form-group">
+    <%# Elixir to generate the text input that's going to be %>
+    <%# Responsible for the title that the user sets  %>
+        <%= text_input f, :title, placeholder: "Title", class: "form-control"%>
+        <%= error_tag f, :title %>
+    </div>
+
+    <%= submit "Save Topic", class: "btn btn-primary"%>
+
+
+<% end %>
+ 
