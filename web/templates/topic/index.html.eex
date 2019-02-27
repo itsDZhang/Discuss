@@ -1,9 +1,30 @@
-<h2> </h2>
+<h5> Topics </h5>
 
 <ul class="collection">
-    <%= for topic <- @optics do %>
+    <%= for topic <- @topics do %>
         <li class="collection-item">
-            <%= topic.title %>
+            <%= link topic.title, to: topic_path(@conn, :show, topic) %>
+
+            <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
+            
+                <div class="right">
+                    <%= link "Edit", to: topic_path(@conn, :edit, topic)%>
+                    <%= link "Delete", to: topic_path(@conn, :delete, topic), method: :delete %>
+                </div>
+            <% end %>
+            
         </li>
     <% end %>
 </ul>
+
+<div class="fixed-action-btn">
+<%# We use a link to tag to generate the anchor tag %>
+<%# We use the to option to specify where to send the user to  %>
+<%# @conn, to the new controller %>
+    <%= link to: topic_path(@conn, :new), class: class="btn-floating btn-large waves-effect waves-light red" do %>
+        <i class="material-icons">add</i>
+    <% end %>
+    </a>
+
+
+</div>

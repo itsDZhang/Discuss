@@ -1,9 +1,13 @@
 defmodule Discuss.UserSocket do
   use Phoenix.Socket
+#   The * is a wild card
+# Something like: get "/comments/:id", CommentController, :join, :handle_in
+    channel "comments:*", Discuss.CommentsChannel
+    
+    
 
   ## Channels
   # channel "room:*", Discuss.RoomChannel
-
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
   # transport :longpoll, Phoenix.Transports.LongPoll
